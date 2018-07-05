@@ -1,14 +1,57 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>
-      Ionic Blank
+      Coffee Order Form
     </ion-title>
+  
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <img src="../../../assets/imgs/coffee.jpg" alt="">
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Customer's name" [(ngModel)]="Name"></ion-input>
+    </ion-item>
+    </ion-list>
+    <h1>Toppings</h1>
+    <div class="label">
+    <ion-item>
+      <ion-label>Whipped Cream</ion-label>
+      <ion-checkbox [(ngModel)]="whipped"></ion-checkbox>
+    </ion-item>
+    
+    <ion-item> 
+      
+      <ion-label>Chocolate</ion-label>
+      <ion-checkbox [(ngModel)]="chocolate"></ion-checkbox>
+    </ion-item>
+
+    <ion-item> 
+      
+      <ion-label>Flat White</ion-label>
+      <ion-checkbox [(ngModel)]="fwhite"></ion-checkbox>
+    </ion-item>
+    </div>
+    <h1>Quantity</h1>
+    <div class ="minus">
+        <button ion-button (click)= "adjust ()" >-</button>
+        {{quantity}}
+        <button ion-button (click)= "onClickA()" >+</button>
+    </div>
+    <h1  text-centre>Order Summary</h1>
+    <div id="order-summary" *ngIf="display == 'block'">
+      <p>Customers name: {{Name}}</p>
+      <p>topping name:{{cream}}</p>
+      <p>topping name:{{choc}}</p>
+      <p>topping name:{{white}}</p>
+      <p>quantity:{{quantity}}</p>
+      <p>total:{{price}}</p>
+      
+    </div>
+    <div class="order" >
+    <button ion-button  (click)= "order()" >Order</button>
+       <button ion-button (click)= "onReset()" >Reset</button>
+    </div>
 </ion-content>
